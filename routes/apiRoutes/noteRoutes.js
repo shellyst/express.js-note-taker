@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const fs = require("fs");
 const path = require("path");
+//Generates random id for each new note.
 const { v4: uuidv4 } = require("uuid");
 
 router.get("/notes", (req, res) => {
@@ -26,6 +27,15 @@ router.post("/notes", (req, res) => {
   });
 });
 
-
+router.delete("/api/notes/:id", (req, res) => {
+  var deleteNote = req.params.id;
+  fs.readFile("db.db.json", "utf-8", (err, data) => {
+    //not sure what goes here
+    fs.writeFile("db/db.json", JSON.stringify(), (err) => {
+      err ? console.log(err) : console.log("Note Deleted");
+    });
+    res.sendFile(path.join(__dirname, "../../public/notes.html"));
+  });
+});
 
 module.exports = router;
