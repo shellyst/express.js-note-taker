@@ -30,8 +30,9 @@ router.post("/notes", (req, res) => {
 router.delete("/api/notes/:id", (req, res) => {
   var deleteNote = req.params.id;
   fs.readFile("db.db.json", "utf-8", (err, data) => {
-    //not sure what goes here
-    fs.writeFile("db/db.json", JSON.stringify(), (err) => {
+    var myArray = JSON.parse(data);
+    var newArray = myArray.filter((item) => item.id !== deleteNote);
+    fs.writeFile("db/db.json", JSON.stringify(newArray), (err) => {
       err ? console.log(err) : console.log("Note Deleted");
     });
     res.sendFile(path.join(__dirname, "../../public/notes.html"));
