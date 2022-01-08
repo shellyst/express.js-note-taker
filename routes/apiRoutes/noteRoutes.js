@@ -27,9 +27,9 @@ router.post("/notes", (req, res) => {
   });
 });
 
-router.delete("/api/notes/:id", (req, res) => {
+router.delete("/notes/:id", (req, res) => {
   var deleteNote = req.params.id;
-  fs.readFile("db.db.json", "utf-8", (err, data) => {
+  fs.readFile("db/db.json", (err, data) => {
     var myArray = JSON.parse(data);
     var newArray = myArray.filter((item) => item.id !== deleteNote);
     fs.writeFile("db/db.json", JSON.stringify(newArray), (err) => {
