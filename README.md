@@ -14,11 +14,9 @@ A Express.js based application that allows users to generate and save a titled n
 
 - [About](#about)
 
-- [Heroku](#heroku)
-
 - [Screenshot](#screenshot)
 
-- [Author](#author)
+- [Heroku](#heroku)
 
 ## Installation
 
